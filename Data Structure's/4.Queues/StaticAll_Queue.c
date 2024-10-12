@@ -75,6 +75,8 @@ int main()
     display();
 
     printf("Peek: %d\n", peek());
+    dequeue();
+    display();
 
     return 0;
 }
