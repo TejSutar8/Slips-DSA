@@ -3,54 +3,66 @@
 
 // Question :-init, enqueue, dequeue, isempty, peek operations.
 // Node structure for the linked list
-typedef struct Node {
+typedef struct Node
+{
     int data;
-    struct Node* next;
+    struct Node *next;
 } Node;
 
 // Queue structure
-typedef struct {
-    Node* front;
-    Node* rear;
+typedef struct node
+{
+    Node *front;
+    Node *rear;
 } Queue;
 
 // Function to initialize the queue
-void init(Queue* q) {
+void init(Queue *q)
+{
     q->front = q->rear = NULL;
 }
 
 // Function to check if the queue is empty
-int isEmpty(Queue* q) {
+int isEmpty(Queue *q)
+{
     return q->front == NULL;
 }
 
 // Function to add an element to the queue
-void enqueue(Queue* q, int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (!newNode) {
+void enqueue(Queue *q, int value)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (!newNode)
+    {
         printf("Memory allocation error\n");
         return;
     }
     newNode->data = value;
     newNode->next = NULL;
-    if (isEmpty(q)) {
+    if (isEmpty(q))
+    {
         q->front = q->rear = newNode;
-    } else {
+    }
+    else
+    {
         q->rear->next = newNode;
         q->rear = newNode;
     }
 }
 
 // Function to remove an element from the queue
-int dequeue(Queue* q) {
-    if (isEmpty(q)) {
+int dequeue(Queue *q)
+{
+    if (isEmpty(q))
+    {
         printf("Queue is empty\n");
         return -1;
     }
-    Node* temp = q->front;
+    Node *temp = q->front;
     int data = temp->data;
     q->front = q->front->next;
-    if (q->front == NULL) {
+    if (q->front == NULL)
+    {
         q->rear = NULL;
     }
     free(temp);
@@ -58,8 +70,10 @@ int dequeue(Queue* q) {
 }
 
 // Function to get the front element of the queue
-int peek(Queue* q) {
-    if (isEmpty(q)) {
+int peek(Queue *q)
+{
+    if (isEmpty(q))
+    {
         printf("Queue is empty\n");
         return -1;
     }
@@ -67,20 +81,24 @@ int peek(Queue* q) {
 }
 
 // Function to display the queue
-void display(Queue* q) {
-    if (isEmpty(q)) {
+void display(Queue *q)
+{
+    if (isEmpty(q))
+    {
         printf("Queue is empty\n");
         return;
     }
-    Node* temp = q->front;
-    while (temp) {
+    Node *temp = q->front;
+    while (temp)
+    {
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
 }
 
-int main() {
+int main()
+{
     Queue q;
     init(&q);
 
