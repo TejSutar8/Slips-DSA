@@ -1,119 +1,108 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Question :-init, enqueue, dequeue, isempty, peek operations.
-// Node structure for the linked list
-typedef struct Node
+struct Node
 {
     int data;
     struct Node *next;
-} Node;
+};
 
-// Queue structure
-typedef struct node
-{
-    Node *front;
-    Node *rear;
-} Queue;
+struct Node *front = NULL;
+struct Node *rear = NULL;
 
-// Function to initialize the queue
-void init(Queue *q)
+// Initialize queue
+void init()
 {
-    q->front = q->rear = NULL;
+    front = rear = NULL;
 }
 
-// Function to check if the queue is empty
-int isEmpty(Queue *q)
+// Check if the queue is empty
+int isempty()
 {
-    return q->front == NULL;
+    return front == NULL;
 }
 
-// Function to add an element to the queue
-void enqueue(Queue *q, int value)
+// Enqueue operation
+void enqueue(int val)
 {
-    Node *newNode = (Node *)malloc(sizeof(Node));
-    if (!newNode)
-    {
-        printf("Memory allocation error\n");
-        return;
-    }
-    newNode->data = value;
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = val;
     newNode->next = NULL;
-    if (isEmpty(q))
+
+    if (rear == NULL)
     {
-        q->front = q->rear = newNode;
+        front = rear = newNode;
+        return;
     }
-    else
-    {
-        q->rear->next = newNode;
-        q->rear = newNode;
-    }
+
+    rear->next = newNode;
+    rear = newNode;
 }
 
-// Function to remove an element from the queue
-int dequeue(Queue *q)
+// Dequeue operation
+int dequeue()
 {
-    if (isEmpty(q))
+    if (isempty())
     {
-        printf("Queue is empty\n");
+        printf("Queue Underflow\n");
         return -1;
     }
-    Node *temp = q->front;
-    int data = temp->data;
-    q->front = q->front->next;
-    if (q->front == NULL)
-    {
-        q->rear = NULL;
-    }
+
+    struct Node *temp = front;
+    front = front->next;
+
+    if (front == NULL)
+        rear = NULL;
+
+    int val = temp->data;
     free(temp);
-    return data;
+    return val;
 }
 
-// Function to get the front element of the queue
-int peek(Queue *q)
+// Peek operation
+int peek()
 {
-    if (isEmpty(q))
+    if (isempty())
     {
         printf("Queue is empty\n");
         return -1;
     }
-    return q->front->data;
+    return front->data;
 }
 
-// Function to display the queue
-void display(Queue *q)
+// Display queue
+void display()
 {
-    if (isEmpty(q))
+    if (isempty())
     {
         printf("Queue is empty\n");
         return;
     }
-    Node *temp = q->front;
-    while (temp)
+
+    struct Node *temp = front;
+    while (temp != NULL)
     {
-        printf("%d ", temp->data);
+        printf("%d -> ", temp->data);
         temp = temp->next;
     }
-    printf("\n");
+    printf("NULL\n");
 }
 
 int main()
 {
-    Queue q;
-    init(&q);
+    init(); // Initialize the queue
 
-    enqueue(&q, 10);
-    enqueue(&q, 20);
-    enqueue(&q, 30);
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
 
-    printf("Queue: ");
-    display(&q);
+    printf("Peek: %d\n", peek());
 
-    printf("Dequeued: %d\n", dequeue(&q));
-    printf("Queue after dequeue: ");
-    display(&q);
+    dequeue();
+    display();
 
-    printf("Front element: %d\n", peek(&q));
+    printf("Peek: %d\n", peek());
 
     return 0;
 }
