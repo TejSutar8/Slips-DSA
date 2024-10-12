@@ -21,12 +21,3 @@ void printarray(int a[], int n)
         printf("%d ", a[i]);
     printf("\n");
 }
-
-int main()
-{
-    int a[] = {64, 25, 12, 22, 11};
-    int n = sizeof(a) / sizeof(a[0]);
-    selectionSort(a, n);
-    printarray(a, n);
-    return 0;
-}
