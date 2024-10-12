@@ -2,16 +2,16 @@
 void linearsearch(int a[], int n, int key)
 {
     int i;
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         if (a[i] == key)
         {
-            printf("The Element is Found : \n");
+            printf("the element found %d", i + 1);
             break;
         }
     }
     if (i == n)
     {
-        printf("The element is not found. \n");
+        printf("element not found \n");
     }
 }

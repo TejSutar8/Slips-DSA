@@ -4,15 +4,14 @@
 int main()
 {
     int a[10], i, n, key;
-    printf("Enter The size : ");
+    printf("Enter the Size \n");
     scanf("%d", &n);
-    printf("Enter elements : \n");
-    for (int i = 0; i < n; i++)
+    printf("Enter the Elements into array \n");
+    for (i = 0; i < n; i++)
     {
-        scanf("%d", a[i]);
+        scanf("%d", &a[i]);
     }
-    printf("Enter the Key : ");
+    printf("Enter the key to search \n");
     scanf("%d", &key);
     linearsearch(a, n, key);
-    return 0;
 }
