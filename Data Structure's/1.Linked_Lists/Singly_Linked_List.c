@@ -9,7 +9,7 @@ struct Node
     struct Node *next;
 };
 
-struct Node *createNode(int data)
+struct Node *create(int data)
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -17,15 +17,15 @@ struct Node *createNode(int data)
     return newNode;
 }
 
-void append(struct Node **head_ref, int new_data)
+void insert(struct Node **head, int new_data)
 {
-    struct Node *new_node = createNode(new_data);
-    if (*head_ref == NULL)
+    struct Node *new_node = create(new_data);
+    if (*head == NULL)
     {
-        *head_ref = new_node;
+        *head = new_node;
         return;
     }
-    struct Node *last = *head_ref;
+    struct Node *last = *head;
     while (last->next != NULL)
         last = last->next;
     last->next = new_node;
@@ -41,14 +41,14 @@ void display(struct Node *node)
     printf("NULL\n");
 }
 
-void deleteNode(struct Node **head_ref, int key)
+void delete(struct Node **head, int key)
 {
-    struct Node *temp = *head_ref;
+    struct Node *temp = *head;
     struct Node *prev = NULL;
 
     if (temp != NULL && temp->data == key)
     {
-        *head_ref = temp->next;
+        *head = temp->next;
         free(temp);
         return;
     }
@@ -69,12 +69,12 @@ void deleteNode(struct Node **head_ref, int key)
 int main()
 {
     struct Node *head = NULL;
-    append(&head, 10);
-    append(&head, 20);
-    append(&head, 30);
+    insert(&head, 10);
+    insert(&head, 20);
+    insert(&head, 30);
     display(head);
 
-    deleteNode(&head, 20);
+    delete(&head, 20);
     display(head);
 
     return 0;
