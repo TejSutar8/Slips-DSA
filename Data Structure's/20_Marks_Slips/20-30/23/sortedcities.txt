@@ -1,0 +1,6 @@
+Atlanta 404
+Chicago 312
+Denver 720
+Houston 713
+New York 212
+San Francisco 415
