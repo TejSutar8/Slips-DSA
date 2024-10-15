@@ -74,7 +74,7 @@ int main()
     insert(&head, 30);
     display(head);
 
-    delete(&head, 20);
+    delete (&head, 20);
     display(head);
 
     return 0;
