@@ -1,0 +1,5 @@
+New York 212
+Los Angeles 213
+Chicago 312
+Houston 713
+Phoenix 602
