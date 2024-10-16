@@ -34,7 +34,7 @@ void quickSort(int a[], int low, int high)
     }
 }
 
-void printaay(int a[], int n)
+void printarray(int a[], int n)
 {
     for (int i = 0; i < n; i++)
         printf("%d ", a[i]);
@@ -46,6 +46,6 @@ int main()
     int a[] = {10, 7, 8, 9, 1, 5};
     int n = sizeof(a) / sizeof(a[0]);
     quickSort(a, 0, n - 1);
-    printaay(a, n);
+    printarray(a, n);
     return 0;
 }
