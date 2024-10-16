@@ -1,5 +1,0 @@
-John Doe 25
-Alice Smith 30
-Bob Johnson 22
-Charlie Brown 28
-David Wilson 35
